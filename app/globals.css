@@ -1,0 +1,723 @@
+@import "tailwindcss";
+
+:root{
+  --ink:#563a32;
+  --muted:#8f756e;
+  --line:#eadbd7;
+  --paper:#fffaf8;
+  --green:#7b5145;
+  --accent:#d88491;
+  --blush:#f7dfe3;
+  --blush-soft:#fff2f4;
+  --cream:#fffaf0;
+  --butter:#f3d77c;
+  --cocoa:#68463c;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#f9efef;color:var(--ink);font-family:"方正兰亭黑","FZLanTingHeiS-R-GB","FZLanTingHei-R-GB","Avenir Next","PingFang SC","Microsoft YaHei",sans-serif}
+button,input{font:inherit}
+button{color:inherit}
+.landingPage{position:relative;width:100%;height:100vh;min-height:560px;overflow:hidden;background:#f8efe6;isolation:isolate}
+.landingBackdrop{position:absolute;inset:0;z-index:-2;background:#f8efe6 url("/bg1.png") center/cover no-repeat}
+.landingHero{position:absolute;z-index:2;left:50%;top:41%;width:min(620px,76vw);display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-50%)}
+.landingLogo{display:block;width:min(570px,68vw);height:auto;opacity:0;animation:landingFadeUp .9s cubic-bezier(.22,.7,.25,1) .12s forwards}
+.landingActions{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:44px}
+.landingActions button{min-width:170px;border:0;border-radius:999px;padding:16px 23px;background:#fff;color:#6a2f0b;box-shadow:0 8px 16px #65321626;font-size:19px;font-weight:700;line-height:1;cursor:pointer;opacity:0;animation:landingFadeUp .75s cubic-bezier(.22,.7,.25,1) forwards;transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
+.landingActions button:first-child{animation-delay:.42s}
+.landingActions button:last-child{animation-delay:.54s}
+.landingActions button span{display:inline-block;margin-left:8px;transition:transform .18s ease}
+.landingActions button:not(:disabled):hover{transform:translateY(-3px);box-shadow:0 13px 24px #65321632;background:#fffdf9}
+.landingActions button:not(:disabled):hover span{transform:translateX(4px)}
+.landingActions button:focus-visible{outline:3px solid #7d3a14;outline-offset:5px}
+.landingActions .landingSecondary:disabled{cursor:not-allowed;opacity:.86}
+.landingPatterns{position:absolute;z-index:1;left:0;right:0;bottom:-1px;width:100%;height:auto;pointer-events:none;user-select:none;opacity:0;animation:landingPatternsIn 1.15s cubic-bezier(.2,.7,.2,1) .25s forwards}
+@keyframes landingFadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes landingPatternsIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.landingLogo,.landingActions button,.landingPatterns{opacity:1;animation:none;transform:none}}
+.libraryPage{min-height:100vh;background:#f8f3f1;color:var(--cocoa)}
+.libraryHeader{height:76px;background:#5c2c0d;color:#fff;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 32px;position:sticky;top:0;z-index:10}
+.libraryHeader h1{font-size:20px;margin:0;letter-spacing:.08em}
+.libraryBrand{border:0;background:transparent;padding:0;width:205px;height:52px;overflow:hidden;cursor:pointer}
+.libraryBrand img{width:100%;height:100%;object-fit:cover;transform:scale(1.34)}
+.libraryCreate{justify-self:end;border:0;border-radius:999px;background:#f6c8c4;color:#5c2c0d;padding:11px 19px;font-weight:700;cursor:pointer}
+.libraryContent{width:min(1240px,92vw);margin:0 auto;padding:42px 0 70px}
+.libraryTabs{display:flex;align-items:center;gap:10px;border-bottom:1px solid #dec7c2;margin-bottom:30px;padding-bottom:14px}
+.libraryTabs button{border:0;background:transparent;border-radius:999px;padding:9px 16px;cursor:pointer;font-weight:700;color:#85675f}
+.libraryTabs button.active{background:#68463c;color:#fff}
+.libraryTabs span{display:inline-grid;place-items:center;margin-left:8px;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#ffffff9c;font-size:10px;color:#68463c}
+.libraryGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.libraryCard{position:relative;background:#fff;border:1px solid #eadbd7;border-radius:14px;overflow:hidden;box-shadow:0 12px 30px #68463c10;transition:transform .18s ease,box-shadow .18s ease}
+.libraryCard:hover{transform:translateY(-3px);box-shadow:0 16px 36px #68463c1c}
+.libraryPreview{display:block;width:100%;aspect-ratio:3/2;border:0;padding:0;background:#f3e8e5;cursor:pointer;overflow:hidden}
+.libraryPreview img{width:100%;height:100%;object-fit:cover}
+.libraryCardMeta{padding:15px 48px 17px 17px}
+.libraryName{display:block;max-width:100%;border:0;background:transparent;padding:0;font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.libraryCardMeta small{display:block;color:#a1867e;margin-top:6px;font-size:11px}
+.deleteSaved{position:absolute;right:12px;bottom:15px;width:30px;height:30px;border:1px solid #eadbd7;border-radius:50%;background:#fff;color:#9e7068;font-size:19px;line-height:1;cursor:pointer}
+.deleteSaved:hover{background:#f7dfe3;color:#6a2f0b}
+.emptyLibrary{min-height:430px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#9a7b73}
+.emptyLibrary>span{font-size:54px;color:#d8aaa6}.emptyLibrary h2{margin:12px 0 5px;color:#68463c}.emptyLibrary p{margin:0 0 22px;font-size:13px}.emptyLibrary button{border:0;border-radius:999px;background:#68463c;color:#fff;padding:12px 22px;cursor:pointer}
+.appShell{height:100vh;min-height:720px;display:flex;flex-direction:column;overflow:hidden}
+.topbar{height:64px;background:#5C2C0D;border-bottom:1px solid #5C2C0D;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 22px 0 8px;flex:none;box-shadow:none;z-index:2}
+.brand{height:48px;width:204px;display:flex;align-items:center;overflow:hidden;border:0;background:transparent;padding:0;cursor:pointer}
+.brand img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.34);transform-origin:center}
+.headerCenter{display:flex;align-items:center;justify-content:center;gap:18px}
+.project{display:flex;align-items:center;color:#f4dfe1;font-size:11px;gap:7px}
+.project input{border:0;border-bottom:1px solid transparent;background:transparent;text-align:center;width:180px;color:#fff;padding:6px}
+.project input:focus{outline:0;border-color:#e9b4bd}
+.statusDot,.liveDot{width:7px;height:7px;background:#d88b96;border-radius:50%;box-shadow:0 0 0 3px #f8e4e7}
+.headerActions{display:flex;align-items:center;gap:4px;padding-left:15px;border-left:1px solid #ffffff29}
+.libraryLink{justify-self:end;border:1px solid #ffffff42;background:#ffffff0d;color:#fff;border-radius:999px;padding:9px 16px;font-size:11px;font-weight:700;cursor:pointer;transition:background .18s ease,border-color .18s ease}
+.libraryLink:hover{background:#ffffff1c;border-color:#ffffff70}
+.headerActions button,.stageFooter button{border:0;background:transparent;padding:10px 14px;cursor:pointer}
+.ghost{color:#fff;font-size:13px}
+.historyButton,.clearButton{width:38px;height:38px;padding:0!important;display:grid;place-items:center;border-radius:50%;font-size:22px;line-height:1}
+.historyButton:hover,.clearButton:hover{background:#ffffff18}
+.historyButton:disabled{opacity:.35;cursor:not-allowed}
+.clearButton{margin-left:4px;font-size:19px}
+.exportBtn{background:#f4d77b!important;color:#5b2b16!important;border-radius:999px;box-shadow:none;font-weight:700}
+.workspace{display:grid;grid-template-columns:250px 330px minmax(520px,1fr);min-height:0;flex:1}
+.typePanel,.controlPanel{background:#fffaf8;border-right:1px solid #d9aaa6;overflow:auto}
+.typePanel{padding:0 22px 25px;background:#F2F2F2;color:var(--cocoa)}
+.panelTitle,.sectionLabel{height:50px;display:flex;justify-content:space-between;align-items:center;font-size:14px;text-transform:none;letter-spacing:.04em;font-weight:700;color:#5C2C0D;background:#F6C8C4;border-bottom:1px solid #d9aaa6;margin-bottom:18px}
+.panelTitle{margin-left:-22px;margin-right:-22px;padding:0 22px}
+.panelTitle small,.sectionLabel small{font-weight:400;color:#9b9e99}
+.typePanel .panelTitle{color:var(--cocoa)}
+.typePanel .panelTitle small{color:#9a665d}
+.typeList{display:flex;flex-direction:column;gap:7px}
+.typeCard{border:1px solid transparent;background:transparent;display:grid;grid-template-columns:46px 1fr 15px;align-items:center;text-align:left;padding:10px;cursor:pointer;border-radius:10px;transition:.18s ease}
+.typeCard:hover{background:#ffffff52}
+.typeCard.active{background:var(--cocoa);border-color:var(--cocoa);box-shadow:none;color:#fff}
+.typeGlyph{width:40px;height:40px;display:grid;place-items:center;background:#f3d77c;font-size:23px;color:var(--cocoa);border-radius:7px}
+.typeCard.active .typeGlyph{background:#f8dfe3}
+.typeGlyph.stripe{background:repeating-linear-gradient(135deg,#d9cfc0 0 5px,#f3eee5 5px 10px);color:transparent}
+.typeGlyph.dot{background:radial-gradient(circle,#8f503b 0 3px,transparent 4px);background-color:#eadbd0;background-size:12px 12px;color:transparent}
+.typeGlyph.knit{background:repeating-linear-gradient(90deg,#f6c8c4 0 2px,#f8e4e2 2px 5px);color:#8b574b;font-size:25px;font-weight:700}
+.typeCard.isPlaceholder{cursor:default}
+.typeCard b{display:block;font-size:14px}
+.typeCard small{display:block;color:#825e57;font-size:10px;margin-top:4px}
+.typeCard.active small{color:#fff7f8}
+.typeCard i{font-style:normal;color:#875d55}
+.typeCard.active i{color:#f4dfe1}
+.importCard{border:1px dashed #d9b8b8;margin-top:25px;padding:12px;text-align:center;display:flex;flex-direction:column;align-items:stretch;gap:10px;background:#fff;border-radius:11px}
+.importPreview{min-height:135px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:#f7dfe3;border-radius:7px;color:var(--cocoa)}
+.importPreview img{display:block;width:100%;height:160px;object-fit:contain;background:#fff}
+.importCard.hasPreview{border-style:solid}
+.uploadIcon{font-size:27px;color:var(--accent);margin-bottom:7px}
+.importCard b{font-size:13px}
+.importCard small{font-size:10px;color:#86665e;line-height:1.5;margin:7px 0 13px}
+.importCard button{border:1px solid #e5aaa7;background:#F6C8C4;padding:8px 19px;font-size:11px;cursor:pointer;width:100%;border-radius:999px;color:var(--cocoa);font-weight:700}
+.importActions{display:grid;grid-template-columns:minmax(64px,.72fr) minmax(110px,1.45fr);gap:8px}
+.importActions .clearImport{background:#fff;border-color:#d9b8b8;padding-left:10px;padding-right:10px}
+.importActions button:hover{border-color:#c98683}
+.importCard input{display:none}
+.tip{margin-top:18px;border-left:3px solid #efb4be;background:#f3d77c;padding:11px 13px;border-radius:0 8px 8px 0;color:var(--cocoa)}
+.tip b{font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.tip p{font-size:10px;color:#765045;line-height:1.5;margin:5px 0 0}
+.controlPanel{padding:0;background:#F2F2F2;overflow:hidden}
+.controls{height:100%;min-height:0;padding:50px 25px 0;display:flex;flex-direction:column;position:relative}
+.controlPanel .sectionLabel{position:absolute;z-index:3;top:0;left:0;right:0;flex:none;margin:0;padding:0 25px}
+.controlsScroll{min-height:0;flex:1;overflow-y:auto;overflow-x:hidden;margin:0 -25px;padding:44px 21px 27px 25px;scrollbar-gutter:stable;scrollbar-width:thin;scrollbar-color:#8a5544 transparent}
+.controlsScroll::-webkit-scrollbar{width:4px}
+.controlsScroll::-webkit-scrollbar-track{background:transparent}
+.controlsScroll::-webkit-scrollbar-thumb{background:#8a5544;border-radius:999px}
+.controlsScroll::-webkit-scrollbar-thumb:hover{background:#5C2C0D}
+.sectionLabel button{border:0;background:#fff0e3;color:#b56655;font-size:10px;cursor:pointer;border-radius:999px;padding:7px 11px}
+.modeSegment{display:flex;background:#f4e8e5;padding:3px;margin-bottom:29px;border-radius:8px}
+.modeSegment button{flex:1;border:0;background:transparent;font-size:11px;padding:8px 5px;cursor:pointer}
+.modeSegment .active{background:white;box-shadow:0 1px 4px #0001}
+.modeSegment.dotMode{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+.modeSegment.dotMode button{min-height:34px;line-height:1.2}
+.customDotUpload{margin:17px 0 15px;display:flex;flex-direction:column;gap:7px}
+.customDotUpload button{border:1px dashed #d9aaa5;border-radius:8px;background:#fff;padding:10px;color:var(--cocoa);font:inherit;font-weight:700;cursor:pointer}
+.customDotUpload button.active{border-style:solid;background:#f9dfdf}
+.customDotUpload small{color:#8b6b64;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.customDotUpload input{display:none}
+.styleSelect{width:100%;border:0;background:#fff;padding:10px 12px;font-size:11px;color:var(--ink);outline:none;cursor:pointer;box-shadow:0 2px 8px #68463c0e;border-radius:6px}
+.backgroundColor{display:flex;justify-content:space-between;align-items:center;margin:0 0 27px;font-size:12px;font-weight:700}
+.backgroundBlendControl>span{display:block;margin-bottom:12px;font-size:12px;font-weight:700}
+.backgroundBlendControl .modeSegment{margin-bottom:27px}
+.backgroundTextureSelect{margin-bottom:27px}
+.sliderRow{display:block;margin:0 0 27px;font-size:12px}
+.sliderLabel{display:flex;justify-content:space-between;gap:12px;align-items:center;font-weight:700}
+.bandActions{display:flex;align-items:center;gap:8px}
+.bandActions button{width:32px;height:32px;border:1px solid #dfc7c3;border-radius:50%;background:#fff;cursor:pointer;line-height:1;color:var(--cocoa)}
+.bandActions .removeBand{font-size:18px}
+.sliderLine{display:grid;grid-template-columns:1fr 120px;align-items:center;gap:12px;margin-top:11px}
+.fineLineControl{margin-bottom:31px}
+.fineLineSetting{grid-template-columns:30px 1fr 120px;gap:9px;margin-top:9px}
+.fineLineSetting>small{font-size:9px;font-weight:500;color:#9a7770;white-space:nowrap}
+.sliderLine input[type="range"]{appearance:none;height:3px;background:linear-gradient(90deg,var(--accent) var(--p),#eadfdc var(--p));outline:none}
+.sliderLine input[type="range"]::-webkit-slider-thumb{appearance:none;width:14px;height:14px;background:#fff;border:2px solid var(--accent);border-radius:50%;box-shadow:0 2px 6px #7b51452b}
+.numberField{display:grid;grid-template-columns:1fr auto;align-items:center;background:#f7efec;padding:0 8px;min-height:36px;border-radius:5px}
+.numberField input{width:100%;border:0;background:transparent;text-align:right;font:12px monospace;outline:none}
+.numberField em{font-style:normal;color:#666;margin-left:6px}
+.colorField{position:relative;display:inline-flex;align-items:center;gap:8px}
+.hexInput{width:106px;height:36px;border:1px solid #cfcfc7;background:#fff;padding:0 12px;font:12px monospace;outline:none}
+.hexInput:focus{border-color:#d898a3;box-shadow:0 0 0 2px #d884911d}
+.colorSwatch{width:36px;height:36px;border:1px solid #cfcfc7;background:#fff;border-radius:2px;cursor:pointer}
+.colorPopover{position:absolute;right:0;top:44px;z-index:20;width:220px;padding:12px;background:#fff;border:1px solid #d8d6cf;box-shadow:0 16px 30px #00000012;display:grid;gap:10px}
+.colorPopover b{font-size:11px}
+.colorPlane{position:relative;height:140px;cursor:crosshair;background-image:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,transparent)}
+.colorPlane i,.hueSlider i{position:absolute;width:14px;height:14px;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #00000033;transform:translate(-50%,-50%)}
+.hueSlider{position:relative;height:14px;background:linear-gradient(90deg,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);cursor:pointer}
+.hueSlider i{top:50%}
+.stage{background:#fff;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.stageTop{height:50px;flex:none;background:#F6C8C4;border-bottom:1px solid #d9aaa6;display:flex;justify-content:space-between;align-items:center;padding:0 25px;font-size:14px;font-weight:700;color:#5C2C0D}
+.stageTop>div:first-child{display:flex;align-items:center;gap:8px}
+.stageTop small{color:#898e8a;font-weight:400;margin-left:8px}
+.zoom{display:flex;align-items:center;border:1px solid var(--line);background:white}
+.zoom button{border:0;background:none;padding:6px 9px;cursor:pointer}
+.zoom span{font:10px monospace;width:42px;text-align:center}
+.previewRatioBar{height:40px;flex:none;display:flex;align-items:center;gap:5px;padding:0 25px;border-bottom:1px solid var(--line);background:#fff;color:#947b74;font-size:10px}
+.previewRatioBar span{margin-right:5px;color:var(--cocoa);font-weight:700}
+.previewRatioBar button{border:1px solid var(--line);background:#fff;color:#795b52;padding:5px 9px;cursor:pointer}
+.previewRatioBar button.active{background:var(--blush);color:var(--cocoa);border-color:#dfb8bf}
+.canvasWrap{flex:1;min-height:0;display:grid;place-items:center;padding:38px;overflow:hidden;background-color:#fff;background-image:radial-gradient(circle,#d9d9d9 1px,transparent 1.1px);background-size:18px 18px}
+.patternCanvas{width:min(72vh,74vw);aspect-ratio:2/1;background:white;border:1px solid #eadbd7;box-shadow:0 20px 55px #774c401d,0 0 0 8px #fff8f8;position:relative;transition:background .15s,transform .2s;transform-origin:center}
+.patternCanvas canvas{width:100%;height:100%;display:block;image-rendering:pixelated;image-rendering:crisp-edges}
+.patternCanvas.smoothCanvas canvas{image-rendering:auto}
+.canvasTag{position:absolute;left:16px;bottom:16px;background:#fffaf0e8;border:1px solid #f0ded7;backdrop-filter:blur(5px);padding:9px 12px;font:10px monospace;letter-spacing:.04em;color:var(--cocoa)}
+.canvasTag span{display:block;color:#6e736f;font-size:8px;margin-top:3px}
+.stageFooter{height:55px;min-height:55px;flex:0 0 55px;position:relative;z-index:5;background:#fff;border-top:1px solid var(--line);padding:0 20px;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#947b74}
+.stageFooter button{font-size:11px;padding:7px 11px;border:1px solid var(--line);margin-left:6px;background:white}
+.exportRatio{display:flex;align-items:center;gap:2px}
+.exportRatio span{margin-right:5px}
+.exportRatio button{font-size:10px;padding:6px 8px;margin-left:3px}
+.exportRatio button.active{background:var(--blush);color:var(--cocoa);border-color:#dfb8bf}
+.exportActions button.saveLibraryButton{background:#f6c8c4;color:#5c2c0d;border-color:#e4aaa5;border-radius:999px;font-weight:700;min-width:128px}
+.exportActions button.exportPngButton{background:#f6c8c4;color:#5c2c0d;border-color:#e4aaa5;border-radius:999px;font-weight:700;min-width:100px}
+@media(max-width:1000px){.libraryGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.headerCenter{gap:8px}.headerActions{padding-left:8px}.libraryLink{padding:8px 11px}}
+@media(max-width:760px){.libraryHeader{height:64px;padding:0 16px;grid-template-columns:1fr auto}.libraryHeader h1{display:none}.libraryBrand{width:160px;height:44px}.libraryCreate{padding:9px 13px;font-size:12px}.libraryContent{padding-top:25px}.libraryTabs{overflow-x:auto}.libraryTabs button{white-space:nowrap;padding:8px 12px}.libraryGrid{grid-template-columns:1fr}.exportActions .saveLibraryButton{min-width:108px}}
+@media(max-width:1000px){.landingHero{top:40%}.landingActions{margin-top:34px;gap:18px}.landingActions button{min-width:155px;padding:14px 19px;font-size:17px}.workspace{grid-template-columns:210px 285px minmax(420px,1fr)}.typePanel{padding:0 14px 20px}.typePanel .panelTitle{margin-left:-14px;margin-right:-14px;padding:0 14px}.controlPanel .controls{padding:50px 18px 24px}.controlPanel .sectionLabel{padding:0 18px}.controlsScroll{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:14px}.patternCanvas{width:min(58vh,60vw)}}@media(max-width:760px){.landingPage{min-height:520px}.landingHero{top:35%;width:82vw}.landingLogo{width:78vw}.landingActions{width:min(285px,82vw);flex-direction:column;gap:11px;margin-top:27px}.landingActions button{width:100%;min-width:0;padding:13px 18px;font-size:16px}.landingPatterns{width:auto;max-width:none;height:26vh;min-height:150px;left:50%;transform:translateX(-50%)}.appShell{height:auto;min-height:100vh;overflow:auto}.topbar{grid-template-columns:1fr auto;height:60px;padding:0 14px}.project{display:none}.headerActions .ghost{display:none}.workspace{display:flex;flex-wrap:wrap}.typePanel{width:42%;border-bottom:1px solid var(--line)}.controlPanel{width:58%;border-bottom:1px solid var(--line)}.stage{width:100%;height:620px}.patternCanvas{width:min(92vw,560px)}.brand{font-size:12px}.sliderLine{grid-template-columns:1fr 110px}.hexInput{width:92px}}
+
+/* Editor textile theme */
+.appShell{--editor-ink:#6b2b08;--editor-red:#c91d1d;background-color:#f8eddf;background-image:linear-gradient(#ffffff80,#ffffff80),url("/bg3.png");background-position:center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat;color:var(--editor-ink)}
+.appShell .topbar{height:68px;position:relative;background:#fbeece;border:0;padding:0 38px;box-shadow:none;color:var(--editor-ink);z-index:8}
+.appShell .topbar::after{content:"× × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × ×";position:absolute;left:0;right:0;bottom:-8px;height:12px;overflow:hidden;white-space:nowrap;pointer-events:none;color:#7b3512;font:700 12px/12px monospace;letter-spacing:-1px}
+.appShell .brand{width:155px;height:31px}
+.appShell .brand img{object-fit:contain;transform:none}
+.appShell .project input{color:var(--editor-ink);font-size:16px;font-weight:700;width:220px}
+.appShell .project input:focus{border-color:#a85d34}
+.appShell .headerActions{border-color:#7b35122e}
+.appShell .ghost{color:var(--editor-ink)}
+.appShell .historyButton:hover,.appShell .clearButton:hover{background:#7b351210}
+.appShell .libraryLink{border:0;border-radius:0;background:transparent;color:var(--editor-ink);font-size:15px;text-decoration:underline;text-underline-offset:5px;padding:9px 0}
+.appShell .libraryLink:hover{background:transparent;color:#a13a13}
+.appShell .workspace{grid-template-columns:240px 410px minmax(520px,1fr);gap:30px;padding:28px 38px;background:transparent}
+.appShell .typePanel,.appShell .controlPanel,.appShell .stage{position:relative;height:100%;min-height:0;background:transparent;border:0;overflow:hidden;box-shadow:0 2px 0 #8f4d2412;isolation:isolate}
+.appShell .typePanel::before,.appShell .controlPanel::before,.appShell .stage::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:48px;bottom:0;background:#fff}
+.appShell .typePanel{padding:72px 20px 24px;color:var(--editor-ink);overflow-y:auto}
+.appShell .panelTitle,.appShell .sectionLabel,.appShell .stageTop{position:absolute!important;inset:0 0 auto 0!important;height:48px;margin:0!important;padding:4px 20px 0!important;background:transparent!important;border:0!important;color:var(--editor-ink);font-size:14px;font-weight:400;line-height:20px;letter-spacing:0;z-index:4;align-items:flex-start!important}
+.appShell .panelTitle>span,.appShell .sectionLabel,.appShell .stageTop>div:first-child{font-family:"FZLanTingHeiS-DB-GB","方正兰亭黑",FZLanTingHeiS-R-GB,"PingFang SC",sans-serif;font-weight:600}
+.appShell .panelTitle,.appShell .sectionLabel,.appShell .stageTop{padding-left:0!important}
+.appShell .panelTitle::after,.appShell .sectionLabel::after,.appShell .stageTop::after{left:0}
+.appShell .panelTitle{margin:0;display:flex;justify-content:flex-start;gap:10px}
+.appShell .panelTitle small{font-family:"FZLanTingHeiS-DB-GB","方正兰亭黑",FZLanTingHeiS-R-GB,"PingFang SC",sans-serif;font-size:14px;color:var(--editor-ink);font-weight:600;line-height:20px}
+.appShell .panelTitle::after,.appShell .sectionLabel::after,.appShell .stageTop::after{content:"× × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × ×";position:absolute;left:0;right:0;bottom:-1px;height:17px;overflow:hidden;white-space:nowrap;color:var(--editor-red);font:700 17px/17px monospace;letter-spacing:-1px;transform:translateY(50%)}
+.appShell .sectionLabel{display:flex;align-items:center;justify-content:space-between}
+.appShell .sectionLabel::before{content:"02";position:absolute;left:68px;top:4px;font-family:"FZLanTingHeiS-DB-GB","方正兰亭黑",FZLanTingHeiS-R-GB,"PingFang SC",sans-serif;font-size:14px;font-weight:600;line-height:20px}
+.appShell .sectionLabel button{position:relative;z-index:2;border:0;background:transparent;color:#c25f55;border-radius:0;padding:1px 0;font-size:12px;line-height:18px}
+.appShell .controlPanel{padding:0;overflow:hidden}
+.appShell .controls{position:relative;height:100%;padding:0;overflow:hidden}
+.appShell .controlPanel .sectionLabel{padding-right:22px!important}
+.appShell .controlsScroll{--editor-number-column:140px;position:absolute;z-index:1;inset:68px 0 0;margin:0;padding:12px 18px 28px 22px;background:#fff;overflow-y:auto;overflow-x:hidden;contain:strict;isolation:isolate;clip-path:inset(0)}
+.appShell .controlPanel .sectionLabel{z-index:10;background:transparent!important;pointer-events:none}
+.appShell .controlPanel .sectionLabel button{pointer-events:auto}
+.appShell .stage{padding-top:48px}
+.appShell .stageTop{display:flex;justify-content:space-between}
+.appShell .stageTop>div:first-child{gap:8px}
+.appShell .stageTop>div:first-child::after{content:"03";font-family:"FZLanTingHeiS-DB-GB","方正兰亭黑",FZLanTingHeiS-R-GB,"PingFang SC",sans-serif;font-size:14px;font-weight:600;line-height:20px;margin-left:6px}
+.appShell .stageTop .zoom{position:absolute;right:20px;top:3px}
+.appShell .stageTop small,.appShell .liveDot{display:none}
+.appShell .zoom{border:0;background:transparent;border-radius:0;height:22px}
+.appShell .zoom button{color:var(--editor-ink);padding:0 4px;font-size:12px;line-height:20px}
+.appShell .zoom span{width:35px;font-size:11px;line-height:20px}
+.appShell .previewRatioBar{height:56px;padding:16px 25px 0;background:transparent;border:0;color:#9a6f5c;align-items:flex-start}
+.appShell .previewRatioBar button{border-color:#e2c9ba;color:#7a4933}
+.appShell .previewRatioBar button.active{background:#fbeece;border-color:#d99c80}
+.appShell .canvasWrap{background:#fff;padding:28px;background-image:none}
+.appShell .patternCanvas{box-shadow:0 0 0 7px #fff6ef,0 12px 35px #6b2b0818;border-color:#e7cabb}
+.appShell .stageFooter{background:#fff;border-top:1px solid #ead7ca}
+.appShell .modeSegment{background:#fbeece;border-radius:0}
+.appShell .modeSegment .active{color:var(--editor-ink)}
+.appShell .styleSelect,.appShell .numberField{background:#fbf7ef;border-radius:0;border:1px solid #eadbd0;box-shadow:none}
+.appShell .backgroundColor{display:flex;justify-content:space-between;gap:12px}
+.appShell .sliderLabel{display:flex;justify-content:space-between;gap:12px}
+.appShell .bandActions{width:auto;justify-content:flex-end}
+.appShell .sliderLine{grid-template-columns:minmax(0,1fr) var(--editor-number-column)}
+.appShell .fineLineSetting{grid-template-columns:30px minmax(0,1fr) var(--editor-number-column)}
+.appShell .typeCard{border-radius:0;color:var(--editor-ink)}
+.appShell .typeCard:hover{background:#fdf5e4}
+.appShell .typeCard.active{background:#fbeece;border-color:#e2a58c;color:var(--editor-ink)}
+.appShell .typeCard.active small,.appShell .typeCard.active i{color:#8f5d49}
+.appShell .typeGlyph,.appShell .typeCard.active .typeGlyph{border-radius:0;background-color:#fff7dd}
+.appShell .importCard{border-color:#d69b80;border-radius:0;background:#fffaf0}
+.appShell .importPreview{border-radius:0;background:#fbeece}
+.appShell .importCard button,.appShell .customDotUpload button{border-color:#d98e72;background:#fbeece;color:var(--editor-ink);border-radius:999px}
+.appShell .hexInput,.appShell .colorSwatch,.appShell .colorPopover{border-color:#ddc4b6;border-radius:0}
+.appShell .bandActions button{border-color:#d9aa92;color:var(--editor-ink)}
+.appShell .sliderLine input[type="range"]{background:linear-gradient(90deg,#c91d1d var(--p),#eadfd8 var(--p))}
+.appShell .sliderLine input[type="range"]::-webkit-slider-thumb{border-color:#c91d1d}
+.appShell .exportActions button.saveLibraryButton,.appShell .exportActions button.exportPngButton{background:#fbeece;border-color:#d98e72;color:var(--editor-ink)}
+@media(max-width:1000px){.appShell .workspace{grid-template-columns:190px 330px minmax(420px,1fr);gap:18px;padding:22px 18px 20px}.appShell .topbar{padding:0 22px}.appShell .brand{width:140px;height:28px}.appShell .sectionLabel::before{left:68px}.appShell .controlsScroll{--editor-number-column:120px}}
+@media(max-width:760px){.appShell .topbar{height:56px}.appShell .workspace{padding:18px 12px;gap:12px}.appShell .typePanel,.appShell .controlPanel{padding-top:48px}.appShell .stage{padding-top:48px}.appShell .libraryLink{font-size:12px}}
+
+/* Folder-tab editor theme */
+.appShell{
+  --folder-brown:#562F15;
+  --folder-ink:#673517;
+  --folder-paper:#fff;
+  --folder-tab:#fff1ed;
+  --folder-line:#dfb89f;
+  background-color:#f8eddf;
+  background-image:url("/bg3.png");
+  background-position:center;
+  background-size:cover;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  color:var(--folder-ink);
+}
+.appShell .topbar{
+  height:78px;
+  padding:0 18px 4px;
+  background:transparent;
+  border:0;
+  color:#fff;
+  grid-template-columns:1fr auto;
+  align-items:start;
+  z-index:20;
+}
+.appShell .topbar::after{display:none}
+.appShell .brand{width:74px;height:62px;margin-top:6px;align-items:center;justify-content:center;overflow:visible}
+.appShell .brand img{width:100%;height:100%;object-fit:contain;transform:none}
+.appShell .libraryLink{align-self:start;margin-top:20px;border:0;background:transparent;color:var(--folder-ink);font-size:15px;font-weight:600;text-decoration:none;padding:7px 0}
+.appShell .libraryLink:hover{color:#a13a13;background:transparent}
+.appShell .libraryLink{display:inline-flex;align-items:center;gap:7px}
+.appShell .libraryLink svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.appShell .workspace{
+  grid-template-columns:260px 370px minmax(460px,1fr);
+  gap:0;
+  margin:0 18px 14px;
+  padding:0;
+  background:transparent;
+  overflow:visible;
+  border-radius:0 0 16px 16px;
+}
+.appShell .typePanel,.appShell .controlPanel,.appShell .stage{
+  position:relative;
+  height:100%;
+  min-height:0;
+  background:var(--folder-paper);
+  border:0;
+  box-shadow:none;
+  isolation:auto;
+}
+.appShell .typePanel::before,.appShell .controlPanel::before,.appShell .stage::before{display:none}
+.appShell .typePanel{padding:84px 18px 24px;overflow-y:auto;border-right:0}
+.appShell .controlPanel{padding:0;overflow:hidden;border-right:0}
+.appShell .stage{padding-top:54px;overflow:hidden;border-radius:0 0 16px 0}
+.appShell .panelTitle,.appShell .sectionLabel,.appShell .stageTop{
+  position:absolute!important;
+  top:0!important;
+  bottom:auto!important;
+  left:0!important;
+  right:0!important;
+  height:54px;
+  margin:0!important;
+  padding:0 12px!important;
+  display:flex;
+  align-items:center!important;
+  color:var(--folder-ink);
+  background:var(--folder-tab)!important;
+  border:1px solid var(--folder-line)!important;
+  border-bottom:0!important;
+  border-radius:9px 9px 0 0;
+  font-family:"FZLanTingHeiS-DB-GB","PingFang SC",sans-serif;
+  font-size:14px;
+  font-weight:600;
+  line-height:1;
+  z-index:12;
+}
+.appShell .panelTitle::after,.appShell .sectionLabel::after,.appShell .stageTop::after{display:none}
+.appShell .panelTitle{justify-content:space-between;gap:8px}
+.appShell .panelTitle small,.appShell .sectionLabel::before,.appShell .stageTop>div:first-child::after{
+  color:var(--folder-ink);
+  font:600 14px/1 "FZLanTingHeiS-DB-GB","PingFang SC",sans-serif;
+}
+.appShell .sectionLabel{justify-content:flex-start;gap:8px;padding-right:10px!important}
+.appShell .sectionLabel::before{display:none}
+.appShell .sectionLabelNumber{font-size:14px;font-weight:600;margin-left:auto}
+.appShell .sectionLabelTools{display:flex;align-items:center;height:100%;margin-left:8px;padding-left:8px;border-left:1px solid var(--folder-line)}
+.appShell .sectionLabelTools button{position:static!important;width:29px;height:34px;padding:0!important;border:0!important;background:transparent!important;border-radius:0!important;color:var(--folder-ink)!important;font-size:20px!important;line-height:1!important}
+.appShell .sectionLabelTools button:hover{background:#562f150b!important}
+.appShell .sectionLabel button{
+  position:absolute;top:80px;right:24px;
+  border:1px solid #e39d80;background:#fff9dd;color:#c15e51;
+  border-radius:999px;padding:7px 13px;font-size:11px;line-height:16px;
+}
+.appShell .stageTop{justify-content:flex-start;padding-right:340px!important}
+.appShell .stageTop>div:first-child{gap:6px}
+.appShell .stageTop>div:first-child::after{content:"03";margin-left:6px}
+.appShell .stageTop .zoom{position:absolute;right:210px;top:10px;height:30px;border:0;background:transparent}
+.appShell .stageProject{position:absolute;right:-1px;top:-1px;width:190px;height:54px;display:flex;align-items:center;background:var(--folder-tab);border:1px solid var(--folder-line);border-bottom:0;border-radius:9px 9px 0 0;padding:0 12px;z-index:14}
+.appShell .stageProject input{width:100%;border:0;background:transparent;color:var(--folder-ink);font:600 14px/1 "FZLanTingHeiS-DB-GB","PingFang SC",sans-serif;text-align:center;outline:none}
+.appShell .zoom button{color:var(--folder-ink);font-size:14px;padding:0 5px}
+.appShell .zoom span{width:46px;color:var(--folder-ink);font-size:12px}
+.appShell .stageTop small,.appShell .liveDot{display:none}
+.appShell .controls{height:100%;padding:0;overflow:hidden}
+.appShell .controlsScroll{
+  --editor-number-column:104px;
+  position:absolute;inset:0;margin:0;
+  padding:72px 20px 28px;
+  background:#fff;
+  overflow-y:auto;overflow-x:hidden;
+  clip-path:inset(0);
+}
+.appShell .randomizeRow{height:44px;display:flex;align-items:flex-start;justify-content:flex-end}
+.appShell .randomizeRow button{border:1px solid #e39d80;background:#fff9dd;color:#c15e51;border-radius:999px;padding:7px 13px;font-size:11px;line-height:16px;cursor:pointer}
+.appShell .previewRatioBar{height:48px;padding:12px 22px 0;background:#fff;border:0;align-items:flex-start}
+.appShell .canvasWrap{background:#fff;padding:24px}
+.appShell .stageFooter{background:#fff;border-top:1px solid #ead7ca}
+.appShell .typeCard{border-radius:7px}
+.appShell .typeCard.active{background:#fff0ce;border-color:#e2a58c}
+.appShell .importCard{border-radius:8px}
+.appShell .styleSelect,.appShell .numberField{border-radius:4px}
+.appShell .sliderLine{grid-template-columns:minmax(0,1fr) var(--editor-number-column)}
+.appShell .fineLineSetting{grid-template-columns:30px minmax(0,1fr) var(--editor-number-column)}
+.appShell .exportActions button.saveLibraryButton,.appShell .exportActions button.exportPngButton{background:#fff0ce;border-color:#d98e72;color:var(--folder-ink)}
+@media(max-width:1000px){
+  .appShell .workspace{grid-template-columns:210px 340px minmax(370px,1fr);margin-left:12px;margin-right:12px}
+  .appShell .controlsScroll{--editor-number-column:96px;padding-left:16px;padding-right:16px}
+}
+
+/* Short folder tabs: keep the unused header rail transparent. */
+.appShell .workspace{position:relative}
+.appShell .workspace::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:54px 0 0;
+  background:#fff;
+  border:0;
+  border-radius:0 0 16px 16px;
+  pointer-events:none;
+}
+.appShell .workspace::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  inset:54px 0 0;
+  pointer-events:none;
+  background-image:
+    repeating-linear-gradient(to bottom,var(--folder-line) 0 4px,transparent 4px 8px),
+    repeating-linear-gradient(to bottom,var(--folder-line) 0 4px,transparent 4px 8px);
+  background-position:260px 0,630px 0;
+  background-size:1px 100%,1px 100%;
+  background-repeat:no-repeat;
+  box-sizing:border-box;
+  border:1px solid #632A01;
+  border-radius:0 0 16px 16px;
+}
+.appShell .typePanel,.appShell .controlPanel,.appShell .stage{
+  z-index:1;
+  background:transparent;
+}
+.appShell .controlsScroll{
+  inset:54px 0 0;
+  padding-top:18px;
+}
+.appShell .panelTitle,.appShell .sectionLabel,.appShell .stageTop{
+  right:auto!important;
+  overflow:hidden;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);
+  border-right:0!important;
+}
+.appShell .panelTitle{width:190px}
+.appShell .sectionLabel{width:260px}
+.appShell .controlPanel .sectionLabel{background:#F2F2F2!important}
+.appShell .controlPanel .sectionLabel::before{
+  content:"";
+  display:block;
+  position:absolute;
+  z-index:0;
+  inset:0 auto 0 0;
+  width:140px;
+  height:auto;
+  background:#FFECE9;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);
+}
+.appShell .sectionLabelTitle,.appShell .sectionLabelNumber,.appShell .sectionLabelTools{
+  position:relative;
+  z-index:1;
+}
+.appShell .stageTop{
+  left:0!important;
+  right:0!important;
+  width:100%;
+  padding:0!important;
+  background:transparent!important;
+  border:0!important;
+  clip-path:none;
+}
+.appShell .panelTitle::after,.appShell .sectionLabel::after,.appShell .stageTop::after{
+  content:"";
+  display:block;
+  position:absolute;
+  top:0;
+  right:11px;
+  bottom:auto;
+  left:auto;
+  width:1px;
+  height:54px;
+  background:var(--folder-line);
+  color:transparent;
+  transform:skew(12deg);
+  transform-origin:top;
+}
+.appShell .stageProject{clip-path:polygon(8px 0,100% 0,100% 100%,0 100%)}
+.appShell .stageTop::after{display:none}
+.appShell .stageTop>div:first-child{
+  position:absolute;
+  left:0;
+  right:auto;
+  top:0;
+  width:180px;
+  height:54px;
+  padding:0 12px;
+  display:flex;
+  align-items:center;
+  background:var(--folder-tab);
+  border:1px solid var(--folder-line);
+  border-bottom:0;
+  border-radius:9px 9px 0 0;
+  clip-path:polygon(0 0,calc(100% - 11px) 0,100% 100%,0 100%);
+}
+.appShell .stageTop .zoom{
+  position:absolute;
+  left:160px;
+  right:auto;
+  top:0;
+  width:150px;
+  height:54px;
+  padding:0 10px 0 16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#F2F2F2;
+  border:1px solid var(--folder-line);
+  border-bottom:0;
+  border-radius:9px 9px 0 0;
+  clip-path:polygon(0 0,calc(100% - 11px) 0,100% 100%,0 100%);
+}
+.appShell .stageProject{
+  left:auto;
+  right:0;
+  top:0;
+  background:#F2F2F2;
+}
+@media(max-width:1000px){
+  .appShell .workspace::after{background-position:210px 0,550px 0}
+}
+@media(max-width:760px){
+  .appShell .workspace::after{display:none}
+}
+
+/* Dark outline shared by all folder-style header tabs. */
+.appShell .panelTitle,.appShell .sectionLabel,
+.appShell .stageTop>div:first-child,.appShell .stageTop .zoom,
+.appShell .stageProject{
+  border-color:#632A01!important;
+}
+.appShell .panelTitle::after,.appShell .sectionLabel::after{
+  background:#632A01;
+}
+.appShell .sectionLabelTools{
+  border-left:0;
+}
+.appShell .sectionLabelTools::before{
+  content:"";
+  position:absolute;
+  left:9px;
+  top:0;
+  width:1px;
+  height:54px;
+  background:#632A01;
+  transform:skew(12deg);
+  transform-origin:top;
+}
+
+/* Match the preview/zoom tab construction to the settings/tools tab. */
+.appShell .stageTop>div:first-child{
+  z-index:1;
+  background:#FFECE9;
+  border-right:0;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);
+}
+.appShell .stageTop .zoom{
+  z-index:2;
+  left:168px;
+  border-left:0;
+  border-radius:0 9px 0 0;
+  clip-path:polygon(0 0,calc(100% - 11px) 0,100% 100%,12px 100%);
+}
+.appShell .stageTop .zoom::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:1px;
+  height:54px;
+  background:#632A01;
+  transform:skew(12deg);
+  transform-origin:top;
+}
+
+/* Complete the dark outline where clipped tab edges meet the page. */
+.appShell .panelTitle,.appShell .sectionLabel,
+.appShell .stageTop>div:first-child,.appShell .stageTop .zoom,
+.appShell .stageProject{
+  border-bottom:0!important;
+}
+.appShell .stageTop .zoom::after{
+  content:"";
+  position:absolute;
+  right:10px;
+  top:0;
+  width:1px;
+  height:53px;
+  background:#632A01;
+  transform:skew(12deg);
+  transform-origin:top;
+}
+.appShell .stageProject::before{
+  content:"";
+  position:absolute;
+  left:8px;
+  top:0;
+  width:1px;
+  height:53px;
+  background:#632A01;
+  transform:skew(-8deg);
+  transform-origin:top;
+}
+
+/* Keep each section number directly beside its title. */
+.appShell .panelTitle{
+  justify-content:flex-start;
+  gap:.5em;
+}
+.appShell .sectionLabelNumber{
+  margin-left:.5em;
+}
+.appShell .stageTop>div:first-child{
+  gap:0;
+}
+.appShell .stageTop>div:first-child::after{
+  margin-left:.5em;
+}
+
+/* A lighter, custom-drawn clear icon. */
+.appShell .sectionLabelTools .clearButton svg{
+  width:22px;
+  height:18px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.appShell .sectionLabelTools button{
+  transform:translateX(10px);
+}
+.appShell .panelTitle::after,.appShell .sectionLabel::after{
+  right:12px;
+  width:1px;
+  height:53px;
+}
+
+/* Draw the project tab outline without doubled corners at its clipped edge. */
+.appShell .stageProject{
+  border:0!important;
+  box-shadow:inset 0 1px 0 #632A01,inset -1px 0 0 #632A01;
+}
+.appShell .stageProject::before{
+  left:8px;
+  height:54px;
+  transform:skew(-8.43deg);
+}
+
+/* Pattern-type artwork; selected cards keep the same icon artwork. */
+.appShell .typeGlyph.plaid,.appShell .typeCard.active .typeGlyph.plaid{
+  background:url("/icon-12.png") center/cover no-repeat!important;
+  color:transparent!important;
+}
+.appShell .typeGlyph.stripe,.appShell .typeCard.active .typeGlyph.stripe{
+  background:url("/icon-13.png") center/cover no-repeat!important;
+  color:transparent!important;
+}
+.appShell .typeGlyph.dot,.appShell .typeCard.active .typeGlyph.dot{
+  background:url("/icon-14.png") center/cover no-repeat!important;
+  color:transparent!important;
+}
+.appShell .typeGlyph.knit,.appShell .typeCard.active .typeGlyph.knit{
+  background:url("/icon-15.png") center/cover no-repeat!important;
+  color:transparent!important;
+}
+
+/* Unified pale-yellow treatment for editor actions and selections. */
+.appShell .typeCard.active,
+.appShell .importPreview,
+.appShell .importCard button,
+.appShell .customDotUpload button,
+.appShell .randomizeRow button,
+.appShell .previewRatioBar button.active,
+.appShell .modeSegment,
+.appShell .exportActions button.saveLibraryButton,
+.appShell .exportActions button.exportPngButton{
+  background:#FFF9D5!important;
+}
+.appShell .importCard.isDragging{
+  border-color:#d88491;
+  border-style:solid;
+  box-shadow:0 0 0 3px #d8849124;
+}
+.appShell .importCard.isDragging .importPreview{
+  background:#fff0f3!important;
+}
+
+/* Rounded segmented selectors with a soft-ended active underline. */
+.appShell .modeSegment{
+  gap:4px;
+  padding:6px;
+  border-radius:22px;
+  overflow:hidden;
+}
+.appShell .modeSegment button{
+  position:relative;
+  z-index:0;
+  min-height:36px;
+  padding:9px 7px;
+  border-radius:16px;
+  isolation:isolate;
+}
+.appShell .modeSegment button.active{
+  background:transparent!important;
+  border-radius:16px;
+  box-shadow:none;
+}
+.appShell .modeSegment button.active::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:4px 18px;
+  border-radius:15px;
+  background:#fff;
+  box-shadow:0 1px 4px #632a0114;
+}
+.appShell .modeSegment button.active::after{
+  content:none;
+}
+.appShell .modeSegment.dotMode button{
+  min-height:42px;
+}

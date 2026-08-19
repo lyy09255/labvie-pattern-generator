@@ -1,0 +1,26 @@
+.patternCanvas{overflow:hidden;transition:transform .2s!important;aspect-ratio:2/1;width:min(74vh,68vw)}
+.patternCanvas canvas{display:block;width:100%;height:100%}
+.unitBlock select{width:100%;margin-top:10px;border:1px solid var(--line);background:#fff;padding:9px;font-size:11px}
+.numberField{display:flex;align-items:center;background:#eeede8;min-width:68px;padding:0 7px}
+.numberField input{width:42px;border:0;background:transparent;text-align:right;font:11px monospace;padding:8px 2px;outline:none}
+.numberField input::-webkit-inner-spin-button{opacity:.45}
+.numberField em{font-style:normal;font:10px monospace;color:#555}
+.mergedControls{padding-top:28px!important}
+.sliderLabel{display:flex!important;align-items:center;justify-content:space-between}
+.colorField{display:flex;align-items:center;gap:6px;position:relative}
+.hexInput{width:78px;height:32px;border:1px solid var(--line);background:#fff;padding:0 8px;font:11px monospace;text-transform:uppercase;outline:none}
+.hexInput:focus{border-color:var(--green);box-shadow:0 0 0 2px rgba(31,83,70,.12)}
+.colorSwatch{width:32px;height:32px;border:1px solid var(--line);overflow:hidden;box-shadow:inset 0 0 0 2px #fff;cursor:pointer;background:none;padding:0;border-radius:0}
+.colorPopover{position:absolute;top:40px;right:0;z-index:30;width:220px;padding:12px;border:1px solid var(--line);background:#fff;box-shadow:0 16px 40px rgba(30,34,32,.16);display:flex;flex-direction:column;gap:10px}
+.colorPopover b{font-size:11px;letter-spacing:1px;color:#5f665f}
+.colorPlane{position:relative;height:146px;cursor:crosshair;background-image:linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,transparent)}
+.colorPlane i,.hueSlider i{position:absolute;display:block;width:12px;height:12px;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.28);transform:translate(-50%,-50%)}
+.hueSlider{position:relative;height:16px;border:1px solid var(--line);background:linear-gradient(90deg,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);cursor:pointer}
+.hueSlider i{top:50%}
+.alphaControl{display:grid;grid-template-columns:1fr auto;gap:5px 10px;align-items:center;font-size:10px;color:#626862}
+.alphaControl output{font:10px monospace}
+.alphaControl input{grid-column:1/-1;width:100%;margin:0;accent-color:var(--green)}
+.backgroundColor{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:4px 0 24px;font-size:12px}
+.bandActions{display:flex;align-items:center;gap:6px}
+.bandActions button{width:26px;height:26px;border:1px solid var(--line);background:#fff;border-radius:50%;padding:0;cursor:pointer;font-size:16px;line-height:1}
+.bandActions .removeBand{color:#9a4f4f}
