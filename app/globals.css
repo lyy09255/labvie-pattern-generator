@@ -18,7 +18,7 @@ html,body{margin:0;min-height:100%;background:#f9efef;color:var(--ink);font-fami
 button,input{font:inherit}
 button{color:inherit}
 .landingPage{position:relative;width:100%;height:100vh;min-height:560px;overflow:hidden;background:#f8efe6;isolation:isolate}
-.landingBackdrop{position:absolute;inset:0;z-index:-2;background:#f8efe6 url("/bg1.png") center/cover no-repeat}
+.landingBackdrop{position:absolute;inset:0;z-index:-2;background:#f8efe6 url("/bg1.webp") center/cover no-repeat}
 .landingHero{position:absolute;z-index:2;left:50%;top:41%;width:min(620px,76vw);display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-50%)}
 .landingLogo{display:block;width:min(570px,68vw);height:auto;opacity:0;animation:landingFadeUp .9s cubic-bezier(.22,.7,.25,1) .12s forwards}
 .landingActions{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:44px}
@@ -192,7 +192,7 @@ button{color:inherit}
 @media(max-width:1000px){.landingHero{top:40%}.landingActions{margin-top:34px;gap:18px}.landingActions button{min-width:155px;padding:14px 19px;font-size:17px}.workspace{grid-template-columns:210px 285px minmax(420px,1fr)}.typePanel{padding:0 14px 20px}.typePanel .panelTitle{margin-left:-14px;margin-right:-14px;padding:0 14px}.controlPanel .controls{padding:50px 18px 24px}.controlPanel .sectionLabel{padding:0 18px}.controlsScroll{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:14px}.patternCanvas{width:min(58vh,60vw)}}@media(max-width:760px){.landingPage{min-height:520px}.landingHero{top:35%;width:82vw}.landingLogo{width:78vw}.landingActions{width:min(285px,82vw);flex-direction:column;gap:11px;margin-top:27px}.landingActions button{width:100%;min-width:0;padding:13px 18px;font-size:16px}.landingPatterns{width:auto;max-width:none;height:26vh;min-height:150px;left:50%;transform:translateX(-50%)}.appShell{height:auto;min-height:100vh;overflow:auto}.topbar{grid-template-columns:1fr auto;height:60px;padding:0 14px}.project{display:none}.headerActions .ghost{display:none}.workspace{display:flex;flex-wrap:wrap}.typePanel{width:42%;border-bottom:1px solid var(--line)}.controlPanel{width:58%;border-bottom:1px solid var(--line)}.stage{width:100%;height:620px}.patternCanvas{width:min(92vw,560px)}.brand{font-size:12px}.sliderLine{grid-template-columns:1fr 110px}.hexInput{width:92px}}
 
 /* Editor textile theme */
-.appShell{--editor-ink:#6b2b08;--editor-red:#c91d1d;background-color:#f8eddf;background-image:linear-gradient(#ffffff80,#ffffff80),url("/bg3.png");background-position:center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat;color:var(--editor-ink)}
+.appShell{--editor-ink:#6b2b08;--editor-red:#c91d1d;background-color:#f8eddf;background-image:linear-gradient(#ffffff80,#ffffff80),url("/bg3.webp");background-position:center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat;color:var(--editor-ink)}
 .appShell .topbar{height:68px;position:relative;background:#fbeece;border:0;padding:0 38px;box-shadow:none;color:var(--editor-ink);z-index:8}
 .appShell .topbar::after{content:"× × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × × ×";position:absolute;left:0;right:0;bottom:-8px;height:12px;overflow:hidden;white-space:nowrap;pointer-events:none;color:#7b3512;font:700 12px/12px monospace;letter-spacing:-1px}
 .appShell .brand{width:155px;height:31px}
@@ -271,7 +271,7 @@ button{color:inherit}
   --folder-tab:#fff1ed;
   --folder-line:#dfb89f;
   background-color:#f8eddf;
-  background-image:url("/bg3.png");
+  background-image:url("/bg3.webp");
   background-position:center;
   background-size:cover;
   background-attachment:fixed;
