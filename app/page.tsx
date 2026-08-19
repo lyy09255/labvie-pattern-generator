@@ -30,10 +30,10 @@ type SavedDesign = {id:string;name:string;type:PatternType;snapshot:string;previ
 type LibraryFilter = PatternType|"all";
 const libraryStorageKey="labvie-pattern-library-v1";
 const backgroundTextures:{id:BackgroundTextureKind;label:string;image:string;tag:string}[]=[
-  {id:"linen",label:"亚麻",image:"/yama.png?v=20260818",tag:"LINEN"},
-  {id:"denim",label:"牛仔",image:"/niuzai.png?v=20260818",tag:"DENIM"},
-  {id:"stripe",label:"条纹",image:"/tiaowen.png?v=20260818",tag:"STRIPE"},
-  {id:"knitted",label:"针织",image:"/zhenzhi.png?v=20260818",tag:"KNITTED"},
+  {id:"linen",label:"亚麻",image:"./yama.png?v=20260818",tag:"LINEN"},
+  {id:"denim",label:"牛仔",image:"./niuzai.png?v=20260818",tag:"DENIM"},
+  {id:"stripe",label:"条纹",image:"./tiaowen.png?v=20260818",tag:"STRIPE"},
+  {id:"knitted",label:"针织",image:"./zhenzhi.png?v=20260818",tag:"KNITTED"},
 ];
 
 const dotShapes:{id:DotShape;label:string}[]=[
@@ -360,7 +360,7 @@ export default function Home() {
     let cancelled=false;
     const image=new Image();
     image.onload=()=>{if(!cancelled){backgroundImageRef.current=image;setBackgroundImageRevision(value=>value+1)}};
-    image.src=backgroundTextures.find(item=>item.id===backgroundTextureKind)?.image??"/niuzai.png?v=20260818";
+    image.src=backgroundTextures.find(item=>item.id===backgroundTextureKind)?.image??"./niuzai.png?v=20260818";
     return()=>{cancelled=true};
   },[backgroundTextureKind]);
   useEffect(()=>{
@@ -810,7 +810,7 @@ export default function Home() {
   const visibleDesigns=libraryFilter==="all"?savedDesigns:savedDesigns.filter(entry=>entry.type===libraryFilter);
 
   if(view==="library")return <main className="libraryPage">
-    <header className="libraryHeader"><button type="button" className="libraryBrand" onClick={()=>setView("home")}><img src="/lavie-wordmark-header.png" alt="RPDCLavie"/></button><h1>我的纹理库</h1><button type="button" className="libraryCreate" onClick={()=>setView("editor")}>＋ 创建纹理</button></header>
+    <header className="libraryHeader"><button type="button" className="libraryBrand" onClick={()=>setView("home")}><img src="./lavie-wordmark-header.png" alt="RPDCLavie"/></button><h1>我的纹理库</h1><button type="button" className="libraryCreate" onClick={()=>setView("editor")}>＋ 创建纹理</button></header>
     <section className="libraryContent">
       <nav className="libraryTabs" aria-label="纹理分类">{libraryTypes.map(item=><button type="button" key={item.id} className={libraryFilter===item.id?"active":""} onClick={()=>setLibraryFilter(item.id)}>{item.label}<span>{item.id==="all"?savedDesigns.length:savedDesigns.filter(entry=>entry.type===item.id).length}</span></button>)}</nav>
       {visibleDesigns.length?<div className="libraryGrid">{visibleDesigns.map(entry=><article className="libraryCard" key={entry.id}><button type="button" className="libraryPreview" onClick={()=>openSavedDesign(entry)}><img src={entry.preview} alt={`${entry.name}预览`}/></button><div className="libraryCardMeta"><button type="button" className="libraryName" onClick={()=>openSavedDesign(entry)}>{entry.name}</button><small>{types.find(item=>item.id===entry.type)?.label} · {new Date(entry.createdAt).toLocaleDateString("zh-CN")}</small></div><button type="button" className="deleteSaved" aria-label={`删除${entry.name}`} title="删除" onClick={()=>deleteSavedDesign(entry.id)}>×</button></article>)}</div>:<div className="emptyLibrary"><span>▦</span><h2>这里还没有纹理</h2><p>前往创建纹理，保存后会显示在对应分类中。</p><button type="button" onClick={()=>setView("editor")}>创建第一个纹理 →</button></div>}
@@ -831,7 +831,7 @@ export default function Home() {
 
   return <main className="appShell">
     <header className="topbar">
-      <button type="button" className="brand" aria-label="返回首页" onClick={()=>setView("home")}><img src="/logo2.png" alt="RPDCLavie"/></button>
+      <button type="button" className="brand" aria-label="返回首页" onClick={()=>setView("home")}><img src="./logo2.png" alt="RPDCLavie"/></button>
       <button type="button" className="libraryLink" onClick={()=>setView("library")}>我的纹理库 <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.75l8.5 6.75v9.25h-6v-5.5h-5v5.5h-6z"/></svg></button>
     </header>
 
