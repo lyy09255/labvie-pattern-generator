@@ -57,10 +57,10 @@ test("keeps the landing assets and editor transition in the project", async () =
   assert.match(page, />正片叠底<\/button>/);
   assert.match(page, />柔光<\/button>/);
   assert.match(page, /aria-label="纹理类型"/);
-  assert.match(page, /label:"亚麻",image:"\/yama\.png/);
-  assert.match(page, /label:"牛仔",image:"\/niuzai\.png/);
-  assert.match(page, /label:"条纹",image:"\/tiaowen\.png/);
-  assert.match(page, /label:"针织",image:"\/zhenzhi\.png/);
+  assert.match(page, /label:"亚麻",image:"\.\/yama\.png/);
+  assert.match(page, /label:"牛仔",image:"\.\/niuzai\.png/);
+  assert.match(page, /label:"条纹",image:"\.\/tiaowen\.png/);
+  assert.match(page, /label:"针织",image:"\.\/zhenzhi\.png/);
   assert.match(page, /className="clearImport" onClick=\{clearImportedImage\}>清除<\/button>/);
   assert.match(page, /labvie-pattern-library-v1/);
   assert.match(page, /保存至「纹理库」/);
