@@ -35,6 +35,7 @@ const backgroundTextures:{id:BackgroundTextureKind;label:string;image:string;tag
   {id:"stripe",label:"条纹",image:"./tiaowen.webp?v=20260819",tag:"STRIPE"},
   {id:"knitted",label:"针织",image:"./zhenzhi.webp?v=20260819",tag:"KNITTED"},
 ];
+const backgroundTexturePreloadCache:HTMLImageElement[]=[];
 
 const dotShapes:{id:DotShape;label:string}[]=[
   {id:"circle",label:"圆点"},
@@ -356,6 +357,21 @@ export default function Home() {
     type,spacing,width,secondaryWidth,secondaryEnabled,secondaryOffset,accentWidth,accentOffset,accentEnabled,stripeDirection,dotSize,
     colors,colorOpacities,backgroundColor,backgroundColorOpacity,backgroundBlendMode,backgroundTextureKind,extraMain,extraSecondary,extraAccent,stripeConfig,dotConfig,
   }),[type,spacing,width,secondaryWidth,secondaryEnabled,secondaryOffset,accentWidth,accentOffset,accentEnabled,stripeDirection,dotSize,colors,colorOpacities,backgroundColor,backgroundColorOpacity,backgroundBlendMode,backgroundTextureKind,extraMain,extraSecondary,extraAccent,stripeConfig,dotConfig]);
+  useEffect(()=>{
+    const preload=()=>{
+      if(backgroundTexturePreloadCache.length)return;
+      backgroundTextures.forEach(texture=>{
+        const image=new Image();
+        image.decoding="async";
+        image.src=texture.image;
+        backgroundTexturePreloadCache.push(image);
+      });
+    };
+    const start=()=>window.setTimeout(preload,250);
+    if(document.readyState==="complete")start();
+    else window.addEventListener("load",start,{once:true});
+    return()=>window.removeEventListener("load",start);
+  },[]);
   useEffect(()=>{
     let cancelled=false;
     const image=new Image();
