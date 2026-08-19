@@ -30,10 +30,10 @@ type SavedDesign = {id:string;name:string;type:PatternType;snapshot:string;previ
 type LibraryFilter = PatternType|"all";
 const libraryStorageKey="labvie-pattern-library-v1";
 const backgroundTextures:{id:BackgroundTextureKind;label:string;image:string;tag:string}[]=[
-  {id:"linen",label:"亚麻",image:"./yama.png?v=20260818",tag:"LINEN"},
-  {id:"denim",label:"牛仔",image:"./niuzai.png?v=20260818",tag:"DENIM"},
-  {id:"stripe",label:"条纹",image:"./tiaowen.png?v=20260818",tag:"STRIPE"},
-  {id:"knitted",label:"针织",image:"./zhenzhi.png?v=20260818",tag:"KNITTED"},
+  {id:"linen",label:"亚麻",image:"./yama.webp?v=20260819",tag:"LINEN"},
+  {id:"denim",label:"牛仔",image:"./niuzai.webp?v=20260819",tag:"DENIM"},
+  {id:"stripe",label:"条纹",image:"./tiaowen.webp?v=20260819",tag:"STRIPE"},
+  {id:"knitted",label:"针织",image:"./zhenzhi.webp?v=20260819",tag:"KNITTED"},
 ];
 
 const dotShapes:{id:DotShape;label:string}[]=[
@@ -360,7 +360,7 @@ export default function Home() {
     let cancelled=false;
     const image=new Image();
     image.onload=()=>{if(!cancelled){backgroundImageRef.current=image;setBackgroundImageRevision(value=>value+1)}};
-    image.src=backgroundTextures.find(item=>item.id===backgroundTextureKind)?.image??"./niuzai.png?v=20260818";
+    image.src=backgroundTextures.find(item=>item.id===backgroundTextureKind)?.image??"./niuzai.webp?v=20260819";
     return()=>{cancelled=true};
   },[backgroundTextureKind]);
   useEffect(()=>{
